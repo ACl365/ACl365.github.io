@@ -39,8 +39,6 @@ jobs:
         run: npm run build
       - name: Add CNAME to output directory
         run: echo "alexander-clarke.com" > ./out/CNAME
-      - name: Copy images to output directory # Explicitly copy images
-        run: cp -r public/images ./out/images # Updated path to images
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
