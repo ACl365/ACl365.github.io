@@ -1,103 +1,143 @@
-import Image from "next/image";
+import Link from 'next/link';
+import { ProjectCard } from '@/components/ProjectCard';
+import { motion } from 'framer-motion';
+// import { ArrowRight } from 'lucide-react'; // Example icon
+
+// Placeholder data for featured projects - replace with actual data fetching later
+const featuredProjects = [
+  {
+    slug: 'environmental-justice',
+    title: 'Environmental Justice Analysis',
+    description: 'Leveraging geospatial data and ML to identify disparities.',
+    imageUrl: '/images/placeholder-project-1.jpg', // Replace with actual image path
+    tags: ['Geospatial', 'Python', 'Data Analysis', 'Social Impact'],
+  },
+  {
+    slug: 'mimic-mlops',
+    title: 'MIMIC-IV MLOps Pipeline',
+    description: 'Building a robust pipeline for clinical predictions.',
+    imageUrl: '/images/placeholder-project-2.jpg', // Replace with actual image path
+    tags: ['MLOps', 'Healthcare', 'Python', 'Kubeflow'],
+  },
+  // Add more featured projects if needed
+];
+
+// Placeholder skills - replace or enhance later
+const skills = ['Data Analysis', 'Machine Learning', 'MLOps', 'Python', 'SQL', 'Geospatial Analysis', 'Cloud (AWS/GCP)', 'Docker', 'Kubernetes'];
+
+// Animation variants for staggering children
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15, // Adjust delay between children
+    },
+  },
+};
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="container mx-auto px-4 py-12 md:px-6 md:py-16 lg:py-24">
+      {/* Hero Section */}
+      <section className="mb-16 text-center md:mb-24 lg:mb-32">
+        <h1 className="mb-4 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl">
+          Data Science for Environmental & Healthcare Impact
+        </h1>
+        <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-600 dark:text-gray-400 md:text-xl">
+          Applying machine learning, MLOps, and data analysis techniques to solve complex challenges in environmental science and healthcare.
+        </p>
+        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Link
+            href="#projects"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-base font-medium text-white shadow-sm transition-colors hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-900"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            View Projects
+          </Link>
+          <Link
+            href="/about"
+            className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-6 py-3 text-base font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-offset-gray-900"
           >
-            Read our docs
-          </a>
+            Learn More About Me
+            {/* <ArrowRight className="ml-2 h-5 w-5" /> */}
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        {/* Optional: Add a subtle visual element here later */}
+      </section>
+
+      {/* Featured Projects Section */}
+      <section id="projects" className="mb-16 md:mb-24 lg:mb-32 scroll-mt-20">
+        <h2 className="mb-8 text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+          Featured Projects
+        </h2>
+        {/* <motion.div
+          className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }} // Trigger when 10% is visible
+        > */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12"> {/* Reverted to simple div */}
+          {featuredProjects.map((project) => (
+            <ProjectCard // ProjectCard already has its own variants for individual animation
+              key={project.slug}
+              slug={project.slug}
+              title={project.title}
+              description={project.description}
+              imageUrl={project.imageUrl}
+              tags={project.tags}
+            />
+          ))}
+        {/* </motion.div> */}
+        </div> {/* Closing the simple div */}
+      </section>
+
+      {/* Skills/Expertise Snapshot */}
+      <section className="mb-16 md:mb-24 lg:mb-32">
+        <h2 className="mb-8 text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+          Skills & Expertise
+        </h2>
+        <div className="flex flex-wrap justify-center gap-3 text-center">
+          {skills.map((skill) => (
+            <span key={skill} className="rounded-full border border-gray-300 bg-gray-50 px-4 py-1.5 text-sm font-medium text-gray-600 shadow-sm transition-colors hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700">
+              {skill}
+            </span>
+          ))}
+          {/* Consider a more visual representation later */}
+        </div>
+      </section>
+
+      {/* About Me Snippet */}
+      <section className="mb-16 rounded-lg bg-gray-50 p-8 text-center dark:bg-gray-800/50 md:mb-24 lg:mb-32">
+        <h2 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
+          About Me
+        </h2>
+        <p className="mx-auto mb-6 max-w-xl text-gray-600 dark:text-gray-400">
+          Driven by a passion for using data to understand and improve the world around us. Currently exploring intersections between technology, environmental sustainability, and healthcare equity.
+        </p>
+        <Link
+          href="/about" // Link to the full About page (to be created)
+          className="text-base font-medium text-primary hover:underline dark:text-primary-light"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          Read My Full Story &rarr;
+        </Link>
+      </section>
+
+      {/* Call to Action (Contact) */}
+      <section className="text-center">
+        <h2 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
+          Let's Connect
+        </h2>
+        <p className="mx-auto mb-6 max-w-lg text-gray-600 dark:text-gray-400">
+          Interested in collaborating or discussing potential opportunities? I'd love to hear from you.
+        </p>
+        <Link
+          href="/contact" // Link to the Contact page (to be created)
+          className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-base font-medium text-white shadow-sm transition-colors hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-900"
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          Get In Touch
+        </Link>
+      </section>
     </div>
   );
 }
