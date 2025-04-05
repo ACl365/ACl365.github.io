@@ -1,7 +1,7 @@
 'use client'; // Needed for Framer Motion hover effects
 
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image'; // Temporarily commented out
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react'; // Optional icon
 
@@ -30,15 +30,13 @@ export function ProjectCard({ slug, title, description, imageUrl, tags }: Projec
         >
             <Link href={`/projects/${slug}`} className="block h-full"> {/* Ensure link covers the card */}
                 {/* Single Image Container */}
-                <div className="relative w-full overflow-hidden aspect-video"> {/* Standard 16:9 aspect ratio */}
-                    <Image
+                {/* Single Image Container - Using standard <img> tag */}
+                <div className="relative w-full overflow-hidden aspect-video bg-gray-100 dark:bg-gray-700"> {/* Added background color */}
+                    <img
                         src={imageUrl}
                         alt={`Featured image for ${title}`}
-                        fill // Use fill to cover the container
-                        className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105" // Keep hover effect
-                        placeholder="blur"
-                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" // Keep blur placeholder
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Optional: Optimize image loading
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105" // Basic styling
+                        loading="lazy" // Add lazy loading
                     />
                     {/* Optional: Subtle gradient overlay */}
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-50"></div>
