@@ -1,8 +1,8 @@
-'use client'; // Required for Framer Motion animations
+// 'use client'; // Temporarily removed to test server component rendering
 
 import Link from 'next/link';
 import { ProjectCard } from '@/components/ProjectCard';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion'; // Removed motion import
 import { Code, Database, BrainCircuit, Cloud, Wrench, Map, BarChartHorizontalBig } from 'lucide-react'; // Icons for skills
 
 // Placeholder data for featured projects - replace with actual data fetching later
@@ -70,21 +70,15 @@ const staggerContainer = {
   },
 };
 
-// Simple fade-in-up animation variant
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
+// Removed fadeInUp animation variant as motion components are removed
 
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-12 md:px-6 md:py-16 lg:py-24">
       {/* Hero Section */}
-      <motion.section
+      {/* Replaced motion.section with section */}
+      <section
         className="mb-16 text-center md:mb-24 lg:mb-32"
-        initial="hidden"
-        animate="visible" // Animate immediately on load
-        variants={fadeInUp}
       >
         <h1 className="mb-4 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl">
           Data Science for Environmental & Healthcare Impact
@@ -108,10 +102,10 @@ export default function Home() {
           </Link>
         </div>
         {/* Optional: Add a subtle visual element here later */}
-      </motion.section>
+      </section>
 
       {/* Featured Projects Section */}
-      {/* Note: ProjectCards inside already have their own whileInView animation */}
+      {/* Note: ProjectCards inside still have their own whileInView animation */}
       <section id="projects" className="mb-16 md:mb-24 lg:mb-32 scroll-mt-20">
         <h2 className="mb-8 text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
           Featured Projects
@@ -140,12 +134,9 @@ export default function Home() {
       </section>
 
       {/* Skills/Expertise Snapshot */}
-      <motion.section
+      {/* Replaced motion.section with section */}
+      <section
         className="mb-16 md:mb-24 lg:mb-32"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }} // Trigger when 20% is visible
-        variants={fadeInUp}
       >
         <h2 className="mb-8 text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
           Skills & Expertise
@@ -167,15 +158,12 @@ export default function Home() {
             </div>
           ))}
         </div>
-      </motion.section>
+      </section>
 
       {/* About Me Snippet */}
-      <motion.section
+      {/* Replaced motion.section with section */}
+      <section
         className="mb-16 rounded-lg bg-gray-50 p-8 text-center dark:bg-gray-800/50 md:mb-24 lg:mb-32"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeInUp}
       >
         <h2 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
           About Me
@@ -189,15 +177,12 @@ export default function Home() {
         >
           Read My Full Story &rarr;
         </Link>
-      </motion.section>
+      </section>
 
       {/* Call to Action (Contact) */}
-      <motion.section
+      {/* Replaced motion.section with section */}
+      <section
         className="text-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeInUp}
       >
         <h2 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
           Let's Connect
@@ -211,7 +196,7 @@ export default function Home() {
         >
           Get In Touch
         </Link>
-      </motion.section>
+      </section>
     </div>
   );
 }
