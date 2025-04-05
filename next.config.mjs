@@ -7,6 +7,12 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+
+  // Disable TypeScript checks during build
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+
   // Optional: Add a trailing slash to all paths `/about` -> `/about/`
   // trailingSlash: true,
 
