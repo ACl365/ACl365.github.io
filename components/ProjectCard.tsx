@@ -9,7 +9,7 @@ interface ProjectCardProps {
     slug: string;
     title: string;
     description: string;
-    imageUrl: string;
+    imageUrls: string[]; // Changed from imageUrl
     tags: string[];
 }
 
@@ -19,7 +19,7 @@ const cardVariants = {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-export function ProjectCard({ slug, title, description, imageUrl, tags }: ProjectCardProps) {
+export function ProjectCard({ slug, title, description, imageUrls, tags }: ProjectCardProps) { // Changed imageUrl to imageUrls
     return (
         <motion.div
             variants={cardVariants} // Apply variants via parent for staggered effect
@@ -29,18 +29,22 @@ export function ProjectCard({ slug, title, description, imageUrl, tags }: Projec
             className="group relative overflow-hidden rounded-lg border border-gray-200/80 bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg dark:border-gray-700/80 dark:bg-gray-800/50 dark:hover:shadow-blue-900/20"
         >
             <Link href={`/projects/${slug}`} className="block h-full"> {/* Ensure link covers the card */}
-                <div className="relative overflow-hidden"> {/* Container for image */}
-                     <Image
-                        src={imageUrl}
-                        alt={`Thumbnail for ${title}`}
-                        width={600} // Adjust as needed
-                        height={400} // Adjust for aspect ratio (e.g., 3:2)
-                        className="aspect-[3/2] w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-                        // Add placeholder if images might be slow to load
-                        placeholder="blur"
-                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" // Tiny transparent placeholder
-                    />
-                     {/* Optional: Subtle gradient overlay on image */}
+                {/* Container for two images side-by-side */}
+                <div className="relative flex w-full overflow-hidden aspect-[3/1]"> {/* Adjust aspect ratio for two images */}
+                    {imageUrls.slice(0, 2).map((url, index) => (
+                        <div key={index} className="relative w-1/2 overflow-hidden"> {/* Each image takes half width */}
+                            <Image
+                                src={url}
+                                alt={`Image ${index + 1} for ${title}`}
+                                width={300} // Half of original width
+                                height={200} // Half of original height (adjust aspect ratio if needed)
+                                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                                placeholder="blur"
+                                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+                            />
+                        </div>
+                    ))}
+                     {/* Optional: Subtle gradient overlay spanning both images */}
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-50"></div>
                 </div>
                 <div className="flex h-full flex-col p-5 md:p-6"> {/* Content padding */}
