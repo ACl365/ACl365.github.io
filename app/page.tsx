@@ -9,20 +9,14 @@ const featuredProjects = [
     slug: 'environmental-justice',
     title: 'Environmental Justice Analysis',
     description: 'Leveraging geospatial data and ML to identify disparities.',
-    imageUrls: [ // Changed from imageUrl to imageUrls array
-      '/images/propensity_scores_high_NO2.png', // Path reverted to standard
-      '/images/lisa_clusters_env_justice_index.png' // Path reverted to standard
-    ],
+    imageUrl: '/images/propensity_scores_high_NO2.png', // Use single image URL
     tags: ['Geospatial', 'Python', 'Data Analysis', 'Social Impact'],
   },
   {
     slug: 'mimic-mlops',
     title: 'MIMIC-IV MLOps Pipeline',
     description: 'Building a robust pipeline for clinical predictions.',
-    imageUrls: [ // Changed from imageUrl to imageUrls array
-      '/images/imbalance_metrics_comparison.png', // Path reverted to standard
-      '/images/shap_summary_plot.png' // Path reverted to standard
-    ],
+    imageUrl: '/images/imbalance_metrics_comparison.png', // Use single image URL
     tags: ['MLOps', 'Healthcare', 'Python', 'Kubeflow'],
   },
   // Add more featured projects if needed
@@ -90,7 +84,7 @@ export default function Home() {
               slug={project.slug}
               title={project.title}
               description={project.description}
-              imageUrls={project.imageUrls} // Pass the array
+              imageUrl={project.imageUrl} // Pass the single URL
               tags={project.tags}
             />
           ))}
