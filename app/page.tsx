@@ -10,8 +10,8 @@ const featuredProjects = [
     title: 'Environmental Justice Analysis',
     description: 'Leveraging geospatial data and ML to identify disparities.',
     imageUrls: [ // Changed from imageUrl to imageUrls array
-      '/inages/propensity_scores_high_NO2.png', // Corrected path
-      '/inages/lisa_clusters_env_justice_index.png' // Corrected path
+      '/images/propensity_scores_high_NO2.png', // Path reverted to standard
+      '/images/lisa_clusters_env_justice_index.png' // Path reverted to standard
     ],
     tags: ['Geospatial', 'Python', 'Data Analysis', 'Social Impact'],
   },
@@ -20,8 +20,8 @@ const featuredProjects = [
     title: 'MIMIC-IV MLOps Pipeline',
     description: 'Building a robust pipeline for clinical predictions.',
     imageUrls: [ // Changed from imageUrl to imageUrls array
-      '/inages/imbalance_metrics_comparison.png', // Corrected path
-      '/inages/shap_summary_plot.png' // Corrected path
+      '/images/imbalance_metrics_comparison.png', // Path reverted to standard
+      '/images/shap_summary_plot.png' // Path reverted to standard
     ],
     tags: ['MLOps', 'Healthcare', 'Python', 'Kubeflow'],
   },
