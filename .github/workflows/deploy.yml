@@ -37,15 +37,15 @@ jobs:
         run: npm ci # Use 'npm install' if you don't have package-lock.json, or yarn/pnpm equivalent
       - name: Build
         run: npm run build
+      - name: Add CNAME to output directory
+        run: echo "alexander-clarke.com" > ./out/CNAME
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload the output directory from the build step
+          # Upload the output directory from the build step (including CNAME)
           path: './out'
-      - name: Add CNAME
-        run: echo "alexander-clarke.com" > ./out/CNAME
 
   # Deployment job
   deploy:
