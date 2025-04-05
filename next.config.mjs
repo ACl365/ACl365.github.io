@@ -3,6 +3,10 @@ const nextConfig = {
   // Enable static export
   output: 'export',
 
+  // Required for static export's next/image component
+  images: {
+    unoptimized: true,
+  },
   // Disable ESLint checks during build
   eslint: {
     ignoreDuringBuilds: true,

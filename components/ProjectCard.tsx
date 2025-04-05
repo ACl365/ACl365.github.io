@@ -6,11 +6,12 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react'; // Optional icon
 
 interface ProjectCardProps {
-    slug: string;
+    // slug: string; // Removed slug as we link directly to liveUrl
     title: string;
     description: string;
     imageUrl: string; // Use single image URL
     tags: string[];
+    liveUrl?: string; // Optional link to the live project
 }
 
 // Animation variants for scroll reveal (can be applied by a parent later)
@@ -19,7 +20,10 @@ const cardVariants = {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-export function ProjectCard({ slug, title, description, imageUrl, tags }: ProjectCardProps) { // Use single imageUrl
+export function ProjectCard({ title, description, imageUrl, tags, liveUrl }: ProjectCardProps) { // Removed slug from props
+    // Use liveUrl as the primary link, default to '#' if not provided
+    const primaryLink = liveUrl || '#';
+
     return (
         <motion.div
             variants={cardVariants} // Apply variants via parent for staggered effect
@@ -28,8 +32,8 @@ export function ProjectCard({ slug, title, description, imageUrl, tags }: Projec
             viewport={{ once: true, amount: 0.3 }} // Trigger animation when 30% visible
             className="group relative overflow-hidden rounded-lg border border-gray-200/80 bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg dark:border-gray-700/80 dark:bg-gray-800/50 dark:hover:shadow-blue-900/20"
         >
-            <Link href={`/projects/${slug}`} className="block h-full"> {/* Ensure link covers the card */}
-                {/* Single Image Container */}
+            {/* Changed Link to <a> tag, linking to liveUrl */}
+            <a href={primaryLink} target="_blank" rel="noopener noreferrer" className="block h-full">
                 {/* Single Image Container - Using standard <img> tag */}
                 <div className="relative w-full overflow-hidden aspect-video bg-gray-100 dark:bg-gray-700"> {/* Added background color */}
                     <img
@@ -56,14 +60,9 @@ export function ProjectCard({ slug, title, description, imageUrl, tags }: Projec
                             </span>
                         )}
                     </div>
-                     {/* "View Case Study" appears on hover */}
-                     <div className="mt-auto flex items-center text-sm font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:text-primary-light">
-                        View Case Study
-                        <ArrowUpRight className="ml-1 h-4 w-4" />
-                        {/* <span className="ml-1">&rarr;</span> */} {/* Simple arrow removed */}
-                    </div>
+                    {/* Removed the separate liveUrl link and "View Case Study" text */}
                 </div>
-            </Link>
+            </a>
         </motion.div>
     );
 }

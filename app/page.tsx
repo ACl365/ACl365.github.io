@@ -1,7 +1,9 @@
+'use client'; // Required for Framer Motion animations
+
 import Link from 'next/link';
 import { ProjectCard } from '@/components/ProjectCard';
 import { motion } from 'framer-motion';
-// import { ArrowRight } from 'lucide-react'; // Example icon
+import { Code, Database, BrainCircuit, Cloud, Wrench, Map, BarChartHorizontalBig } from 'lucide-react'; // Icons for skills
 
 // Placeholder data for featured projects - replace with actual data fetching later
 const featuredProjects = [
@@ -11,6 +13,7 @@ const featuredProjects = [
     description: 'Leveraging geospatial data and ML to identify disparities.',
     imageUrl: '/images/propensity_scores_high_NO2.png', // Use single image URL
     tags: ['Geospatial', 'Python', 'Data Analysis', 'Social Impact'],
+    liveUrl: 'http://alexander-clarke.com/england-environmental-justice-analysis/', // Added live URL
   },
   {
     slug: 'mimic-mlops',
@@ -18,13 +21,44 @@ const featuredProjects = [
     description: 'Building a robust pipeline for clinical predictions.',
     imageUrl: '/images/imbalance_metrics_comparison.png', // Use single image URL
     tags: ['MLOps', 'Healthcare', 'Python', 'Kubeflow'],
+    liveUrl: 'http://alexander-clarke.com/MIMIC_demo/', // Added live URL
   },
   // Add more featured projects if needed
 ];
 
-// Placeholder skills - replace or enhance later
-const skills = ['Data Analysis', 'Machine Learning', 'MLOps', 'Python', 'SQL', 'Geospatial Analysis', 'Cloud (AWS/GCP)', 'Docker', 'Kubernetes'];
-
+// Placeholder skills grouped by category - replace/enhance later
+const skillCategories = [
+  {
+    name: 'Languages & Databases',
+    icon: <Code size={20} className="mr-2" />,
+    skills: ['Python', 'SQL', 'R', 'Bash'],
+  },
+  {
+    name: 'ML & Data Science',
+    icon: <BrainCircuit size={20} className="mr-2" />,
+    skills: ['Scikit-learn', 'Pandas', 'NumPy', 'Statsmodels', 'Jupyter', 'TensorFlow/Keras', 'PyTorch'],
+  },
+   {
+    name: 'Geospatial Analysis',
+    icon: <Map size={20} className="mr-2" />,
+    skills: ['GeoPandas', 'Rasterio', 'Shapely', 'QGIS', 'PostGIS'],
+  },
+  {
+    name: 'MLOps & Engineering',
+    icon: <Wrench size={20} className="mr-2" />,
+    skills: ['Docker', 'Kubernetes', 'Kubeflow', 'MLflow', 'Airflow', 'Git', 'CI/CD'],
+  },
+  {
+    name: 'Cloud & Platforms',
+    icon: <Cloud size={20} className="mr-2" />,
+    skills: ['AWS (S3, EC2, SageMaker)', 'GCP (GCS, Compute Engine, Vertex AI)', 'Azure'],
+  },
+  {
+    name: 'Visualization',
+    icon: <BarChartHorizontalBig size={20} className="mr-2" />,
+    skills: ['Matplotlib', 'Seaborn', 'Plotly', 'Tableau'],
+  },
+];
 // Animation variants for staggering children
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -36,11 +70,22 @@ const staggerContainer = {
   },
 };
 
+// Simple fade-in-up animation variant
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-12 md:px-6 md:py-16 lg:py-24">
       {/* Hero Section */}
-      <section className="mb-16 text-center md:mb-24 lg:mb-32">
+      <motion.section
+        className="mb-16 text-center md:mb-24 lg:mb-32"
+        initial="hidden"
+        animate="visible" // Animate immediately on load
+        variants={fadeInUp}
+      >
         <h1 className="mb-4 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl">
           Data Science for Environmental & Healthcare Impact
         </h1>
@@ -63,9 +108,10 @@ export default function Home() {
           </Link>
         </div>
         {/* Optional: Add a subtle visual element here later */}
-      </section>
+      </motion.section>
 
       {/* Featured Projects Section */}
+      {/* Note: ProjectCards inside already have their own whileInView animation */}
       <section id="projects" className="mb-16 md:mb-24 lg:mb-32 scroll-mt-20">
         <h2 className="mb-8 text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
           Featured Projects
@@ -79,13 +125,14 @@ export default function Home() {
         > */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12"> {/* Reverted to simple div */}
           {featuredProjects.map((project) => (
-            <ProjectCard // ProjectCard already has its own variants for individual animation
-              key={project.slug}
-              slug={project.slug}
+            <ProjectCard // ProjectCard links directly to liveUrl now
+              key={project.slug} // Keep key for React list rendering
+              // slug={project.slug} // Removed slug prop
               title={project.title}
               description={project.description}
               imageUrl={project.imageUrl} // Pass the single URL
               tags={project.tags}
+              liveUrl={project.liveUrl} // Pass the liveUrl prop
             />
           ))}
         {/* </motion.div> */}
@@ -93,22 +140,43 @@ export default function Home() {
       </section>
 
       {/* Skills/Expertise Snapshot */}
-      <section className="mb-16 md:mb-24 lg:mb-32">
+      <motion.section
+        className="mb-16 md:mb-24 lg:mb-32"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }} // Trigger when 20% is visible
+        variants={fadeInUp}
+      >
         <h2 className="mb-8 text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
           Skills & Expertise
         </h2>
-        <div className="flex flex-wrap justify-center gap-3 text-center">
-          {skills.map((skill) => (
-            <span key={skill} className="rounded-full border border-gray-300 bg-gray-50 px-4 py-1.5 text-sm font-medium text-gray-600 shadow-sm transition-colors hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700">
-              {skill}
-            </span>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {skillCategories.map((category) => (
+            <div key={category.name} className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+              <h3 className="mb-4 flex items-center text-lg font-semibold text-gray-800 dark:text-white">
+                {category.icon}
+                {category.name}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => (
+                  <span key={skill} className="rounded-md bg-primary/10 px-2.5 py-0.5 text-sm font-medium text-primary dark:bg-primary-light/15 dark:text-primary-light">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
-          {/* Consider a more visual representation later */}
         </div>
-      </section>
+      </motion.section>
 
       {/* About Me Snippet */}
-      <section className="mb-16 rounded-lg bg-gray-50 p-8 text-center dark:bg-gray-800/50 md:mb-24 lg:mb-32">
+      <motion.section
+        className="mb-16 rounded-lg bg-gray-50 p-8 text-center dark:bg-gray-800/50 md:mb-24 lg:mb-32"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeInUp}
+      >
         <h2 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
           About Me
         </h2>
@@ -121,10 +189,16 @@ export default function Home() {
         >
           Read My Full Story &rarr;
         </Link>
-      </section>
+      </motion.section>
 
       {/* Call to Action (Contact) */}
-      <section className="text-center">
+      <motion.section
+        className="text-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeInUp}
+      >
         <h2 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
           Let's Connect
         </h2>
@@ -137,7 +211,7 @@ export default function Home() {
         >
           Get In Touch
         </Link>
-      </section>
+      </motion.section>
     </div>
   );
 }

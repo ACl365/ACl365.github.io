@@ -3,9 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getAllProjectSlugs, getProjectData } from '@/lib/projects';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-// import { MDXRemote } from 'next-mdx-remote/rsc'; // We'll add this later for rendering
+import rehypePrettyCode from 'rehype-pretty-code';
 // import { ArrowLeft } from 'lucide-react'; // Optional icon
-
 // Generate static paths for all projects at build time
 export async function generateStaticParams() {
   const slugs = getAllProjectSlugs();
@@ -45,6 +44,13 @@ export default async function ProjectPage({ params }: { params: { slug: string }
     month: 'long',
     day: 'numeric',
   });
+
+  // Options for rehype-pretty-code
+  const prettyCodeOptions = {
+    theme: 'github-dark', // Or choose another theme: https://rehype-pretty-code.netlify.app/themes
+    // Keep lines for highlighting specific lines if needed
+    keepBackground: false,
+  };
 
   return (
     <article className="container mx-auto px-4 py-12 md:px-6 md:py-16 lg:py-20">
@@ -113,10 +119,16 @@ export default async function ProjectPage({ params }: { params: { slug: string }
       {/* Main Content Area - Render MDX Content */}
       {/* Apply Tailwind Typography styles for nice formatting */}
       <div className="prose prose-lg max-w-none dark:prose-invert prose-blue prose-img:rounded-lg prose-img:shadow-md prose-a:text-blue-600 hover:prose-a:text-blue-700 dark:prose-a:text-blue-400 dark:hover:prose-a:text-blue-300">
-        <MDXRemote source={content} />
-        {/* Add custom components here if needed: */}
-        {/* <MDXRemote source={content} components={{ CustomChart, AnotherComponent }} /> */}
-
+        <MDXRemote
+          source={content}
+          options={{
+            mdxOptions: {
+              rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
+            },
+          }}
+          // Pass components here if needed, e.g., for charts:
+          // components={{ PlotlyChart }}
+        />
         {/* End of MDX Content */}
       </div>
 

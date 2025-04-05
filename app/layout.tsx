@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google"; // Import Montserrat
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -7,7 +7,14 @@ import { Footer } from "@/components/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-inter", // Variable for body font
+});
+
+// Initialize Montserrat for headings
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ['400', '700'], // Specify weights needed
+  variable: "--font-montserrat", // Variable for heading font
 });
 
 export const metadata: Metadata = {
@@ -21,9 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`${inter.variable} ${montserrat.variable} scroll-smooth`}>
       <body
-        className={`${inter.variable} font-sans antialiased bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 flex flex-col min-h-screen`}
+        className={`font-sans antialiased bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 flex flex-col min-h-screen`} // font-sans will use the default sans defined in tailwind.config
       >
         <Header />
         <main className="flex-grow">

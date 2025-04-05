@@ -25,9 +25,10 @@ module.exports = {
         }
       },
       fontFamily: {
-        // Assuming Inter is the primary sans-serif font (defined in layout.tsx)
-        // Add a display font if desired, e.g.:
-        // 'display': ['"Your Display Font"', 'sans-serif'],
+        // Map 'sans' utility to the Inter font variable with fallbacks
+        sans: ['var(--font-inter)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        // Add 'heading' utility mapped to the Montserrat font variable with fallbacks
+        heading: ['var(--font-montserrat)', 'ui-serif', 'Georgia', 'serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

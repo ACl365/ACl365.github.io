@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Github } from 'lucide-react'; // Example icons (removed Linkedin)
+import { Github, Linkedin, Mail } from 'lucide-react'; // Add Linkedin and Mail icons
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -13,10 +13,15 @@ export function Footer() {
         <div className="mt-4 flex space-x-4 md:mt-0">
           <Link href="https://github.com/ACl365" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary-light transition-colors">
             <Github size={20} />
-            {/* GitHub Placeholder Removed */}
           </Link>
-          {/* LinkedIn link removed as requested */}
-          {/* Add other links if needed */}
+          {/* Add LinkedIn Link */}
+          <Link href="https://linkedin.com/in/your-profile-url" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary-light transition-colors">
+            <Linkedin size={20} />
+          </Link>
+          {/* Add Email Link */}
+          <a href="mailto:your.email@example.com" aria-label="Email Me" className="text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary-light transition-colors">
+            <Mail size={20} />
+          </a>
         </div>
       </div>
     </footer>
