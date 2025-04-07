@@ -10,7 +10,7 @@ const featuredProjects = [
   {
     slug: 'environmental-justice',
     title: 'Environmental Justice Analysis',
-    description: 'Using geospatial data and ML to identify disparities.',
+    description: 'Analyzed spatial patterns of environmental hazards and demographic factors in England using geospatial data and machine learning techniques to identify potential environmental justice disparities.',
     imageUrl: '/images/env-justice-lisa-clusters.png', // Updated image URL
     tags: ['Geospatial', 'Python', 'Data Analysis', 'Social Impact'],
     liveUrl: 'http://alexander-clarke.com/england-environmental-justice-analysis/', // Added live URL
@@ -18,8 +18,8 @@ const featuredProjects = [
   },
   {
     slug: 'mimic-mlops',
-    title: 'MIMIC-IV MLOps Pipeline',
-    description: 'Developing a robust pipeline for clinical predictions.',
+    title: 'MIMIC MLOps Pipeline',
+    description: 'Developed and deployed an MLOps pipeline using Kubeflow on GCP for predicting patient outcomes based on the MIMIC critical care database, focusing on reproducibility and monitoring.',
     imageUrl: '/images/imbalance_metrics_comparison.png', // Use single image URL
     tags: ['MLOps', 'Healthcare', 'Python', 'Kubeflow'],
     liveUrl: 'http://alexander-clarke.com/MIMIC_demo/', // Added live URL

@@ -33,21 +33,24 @@ export function ProjectCard({ title, description, imageUrl, tags, liveUrl, repoU
             viewport={{ once: true, amount: 0.3 }} // Trigger animation when 30% visible
             className="group relative overflow-hidden rounded-lg border border-gray-200/80 bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg dark:border-gray-700/80 dark:bg-gray-800/50 dark:hover:shadow-blue-900/20"
         >
-            {/* Changed Link to <a> tag, linking to liveUrl */}
-            <a href={primaryLink} target="_blank" rel="noopener noreferrer" className="block h-full">
+            {/* Removed outer <a> tag */}
+            <div className="flex h-full flex-col"> {/* Use a div for layout */}
                 {/* Single Image Container - Using standard <img> tag */}
                 <div className="relative w-full overflow-hidden aspect-video bg-gray-100 dark:bg-gray-700"> {/* Added background color */}
                     <img
                         src={imageUrl}
                         alt={`Featured image for ${title}`}
-                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105" // Basic styling
+                        className="absolute inset-0 h-full w-full object-contain transition-transform duration-500 ease-in-out group-hover:scale-105" // Use object-contain to prevent cropping
                         loading="lazy" // Add lazy loading
                     />
                     {/* Optional: Subtle gradient overlay */}
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-50"></div>
                 </div>
                 <div className="flex h-full flex-col p-5 md:p-6"> {/* Content padding */}
-                    <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white md:text-xl">{title}</h3>
+                    {/* Make title the primary link to liveUrl */}
+                    <a href={primaryLink} target="_blank" rel="noopener noreferrer" className="mb-2 text-lg font-semibold text-gray-900 hover:text-primary dark:text-white dark:hover:text-primary-light md:text-xl transition-colors">
+                        {title}
+                    </a> {/* Close title link */}
                     <p className="mb-4 flex-grow text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{description}</p> {/* line-clamp limits description lines */}
                     <div className="mb-4 flex flex-wrap gap-2">
                         {tags.slice(0, 3).map((tag) => ( // Show only first few tags
@@ -75,7 +78,7 @@ export function ProjectCard({ title, description, imageUrl, tags, liveUrl, repoU
                         </a>
                     )}
                 </div>
-            </a>
+            </div> {/* Close main layout div started on line 37 */}
         </motion.div>
     );
 }
