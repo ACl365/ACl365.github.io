@@ -3,7 +3,7 @@
 import Link from 'next/link';
 // import Image from 'next/image'; // Temporarily commented out
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react'; // Optional icon
+import { Github } from 'lucide-react'; // Import Github icon
 
 interface ProjectCardProps {
     // slug: string; // Removed slug as we link directly to liveUrl
@@ -12,6 +12,7 @@ interface ProjectCardProps {
     imageUrl: string; // Use single image URL
     tags: string[];
     liveUrl?: string; // Optional link to the live project
+    repoUrl?: string; // Optional link to the GitHub repository
 }
 
 // Animation variants for scroll reveal (can be applied by a parent later)
@@ -20,7 +21,7 @@ const cardVariants = {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-export function ProjectCard({ title, description, imageUrl, tags, liveUrl }: ProjectCardProps) { // Removed slug from props
+export function ProjectCard({ title, description, imageUrl, tags, liveUrl, repoUrl }: ProjectCardProps) { // Added repoUrl prop
     // Use liveUrl as the primary link, default to '#' if not provided
     const primaryLink = liveUrl || '#';
 
@@ -60,7 +61,19 @@ export function ProjectCard({ title, description, imageUrl, tags, liveUrl }: Pro
                             </span>
                         )}
                     </div>
-                    {/* Removed the separate liveUrl link and "View Case Study" text */}
+                    {/* GitHub Link - positioned at the bottom right */}
+                    {repoUrl && (
+                        <a
+                            href={repoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()} // Prevent card's main link from triggering
+                            className="absolute bottom-4 right-4 z-10 text-gray-500 transition-colors hover:text-gray-800 dark:text-gray-400 dark:hover:text-white"
+                            aria-label="View project source code on GitHub"
+                        >
+                            <Github size={20} />
+                        </a>
+                    )}
                 </div>
             </a>
         </motion.div>

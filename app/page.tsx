@@ -10,18 +10,20 @@ const featuredProjects = [
   {
     slug: 'environmental-justice',
     title: 'Environmental Justice Analysis',
-    description: 'Leveraging geospatial data and ML to identify disparities.',
+    description: 'Using geospatial data and ML to identify disparities.',
     imageUrl: '/images/env-justice-lisa-clusters.png', // Updated image URL
     tags: ['Geospatial', 'Python', 'Data Analysis', 'Social Impact'],
     liveUrl: 'http://alexander-clarke.com/england-environmental-justice-analysis/', // Added live URL
+    repoUrl: 'https://github.com/ACl365/england-environmental-justice-analysis', // Correct Repo URL
   },
   {
     slug: 'mimic-mlops',
     title: 'MIMIC-IV MLOps Pipeline',
-    description: 'Building a robust pipeline for clinical predictions.',
+    description: 'Developing a robust pipeline for clinical predictions.',
     imageUrl: '/images/imbalance_metrics_comparison.png', // Use single image URL
     tags: ['MLOps', 'Healthcare', 'Python', 'Kubeflow'],
     liveUrl: 'http://alexander-clarke.com/MIMIC_demo/', // Added live URL
+    repoUrl: 'https://github.com/ACl365/MIMIC-demo', // Correct Repo URL
   },
   // Add more featured projects if needed
 ];
@@ -31,32 +33,32 @@ const skillCategories = [
   {
     name: 'Languages & Databases',
     icon: <Code size={20} className="mr-2" />,
-    skills: ['Python', 'SQL'], // Simplified from CV
+    skills: ['Python', 'SQL'], // Core languages
   },
   {
     name: 'ML & Data Science',
     icon: <BrainCircuit size={20} className="mr-2" />,
-    skills: ['Scikit-learn', 'Pandas', 'NumPy', 'Statsmodels', 'Predictive Modeling', 'SHAP'], // Key items from CV
+    skills: ['Python (Pandas, Scikit-learn, Statsmodels)', 'Predictive Modeling', 'Clustering', 'SHAP'], // Core ML & libraries
   },
    {
     name: 'Geospatial Analysis',
     icon: <Map size={20} className="mr-2" />,
-    skills: ['GeoPandas', 'PySAL', 'QGIS'], // Key items from CV
+    skills: ['GeoPandas', 'PySAL', 'Spatial Statistics'], // Key geospatial tools
   },
   {
     name: 'MLOps & Engineering',
     icon: <Wrench size={20} className="mr-2" />,
-    skills: ['Docker', 'MLflow', 'FastAPI', 'CI/CD (GitHub Actions)', 'Git', 'Monitoring'], // Key items from CV
+    skills: ['MLflow', 'Docker', 'FastAPI', 'CI/CD Concepts', 'Git', 'Monitoring Principles'], // MLOps & Engineering tools
   },
   {
     name: 'Cloud & Platforms',
     icon: <Cloud size={20} className="mr-2" />,
-    skills: ['GCP (BigQuery, Cloud Storage)'], // From CV (only GCP mentioned)
+    skills: ['GCP (BigQuery, Cloud Storage)'], // Cloud platforms
   },
   {
     name: 'Visualisation',
     icon: <BarChartHorizontalBig size={20} className="mr-2" />,
-    skills: ['Plotly', 'Matplotlib', 'Seaborn', 'Power BI', 'Tableau', 'Streamlit'], // From CV
+    skills: ['Plotly', 'Streamlit', 'Power BI', 'Matplotlib/Seaborn'], // Key visualisation tools
   },
 ];
 // Animation variants for staggering children
@@ -81,7 +83,7 @@ export default function Home() {
         className="mb-16 text-center md:mb-24 lg:mb-32"
       >
         <h1 className="mb-4 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl">
-          Data Science for Environmental & Healthcare Impact
+          Driving Environmental & Healthcare Impact with Data Science
         </h1>
         <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-600 dark:text-gray-400 md:text-xl">
           Applying machine learning, MLOps, and data analysis techniques to solve complex challenges in environmental science and healthcare.
@@ -127,6 +129,7 @@ export default function Home() {
               imageUrl={project.imageUrl} // Pass the single URL
               tags={project.tags}
               liveUrl={project.liveUrl} // Pass the liveUrl prop
+              repoUrl={project.repoUrl} // Pass the repoUrl prop
             />
           ))}
         {/* </motion.div> */}

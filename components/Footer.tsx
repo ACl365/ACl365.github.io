@@ -14,7 +14,11 @@ export function Footer() {
           <Link href="https://github.com/ACl365" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary-light transition-colors">
             <Github size={20} />
           </Link>
-          {/* Add Email Link */}
+          {/* LinkedIn Link */}
+          <Link href="https://www.linkedin.com/in/alexander-clarke-data/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary-light transition-colors">
+            <Linkedin size={20} />
+          </Link>
+          {/* Email Link */}
           <a href="mailto:alexanderclarke365@gmail.com" aria-label="Email Me" className="text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary-light transition-colors">
             <Mail size={20} />
           </a>

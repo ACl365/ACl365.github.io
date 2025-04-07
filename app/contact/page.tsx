@@ -47,7 +47,7 @@ export default function ContactPage() {
             <div>
               <h2 className="font-semibold text-gray-800 dark:text-white">GitHub</h2>
               <p className="text-sm text-gray-600 hover:underline dark:text-gray-400">
-                View My Projects
+                ACl365
               </p>
             </div>
           </Link>

@@ -51,23 +51,14 @@ export default function AboutContent() {
           <div className="sticky top-24"> {/* Sticky positioning */}
             <div className="mb-8 overflow-hidden rounded-lg shadow-lg">
               <Image
-                src="/images/your-professional-photo.jpg" // **ACTION:** Replace with your photo path in /public/images
-                alt="Professional headshot of Alex Clarke" // **ACTION:** Update alt text
+                src="/images/profile_pic.jpg"
+                alt="Professional headshot of Alex Clarke"
                 width={400}
                 height={400}
                 className="aspect-square w-full object-cover"
                 priority // Load photo quickly
               />
             </div>
-            <Link
-              href="/path/to/your-resume.pdf" // **ACTION:** Replace with path to your resume PDF in /public
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex w-full items-center justify-center rounded-md bg-primary px-6 py-3 text-base font-medium text-white shadow-sm transition-colors hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-900"
-            >
-              <Download className="mr-2 h-5 w-5" />
-              Download Resume
-            </Link>
           </div>
         </motion.aside>
 
@@ -82,14 +73,18 @@ export default function AboutContent() {
           <section className="mb-12">
             <h2 className="mb-4 text-2xl font-semibold text-gray-800 dark:text-white">My Story &amp; Philosophy</h2>
             <div className="prose prose-lg max-w-none dark:prose-invert prose-blue">
-              {/* **ACTION:** Replace this with your personal story and professional philosophy */}
               <p>
-                Driven by a fascination with uncovering patterns and insights within data, I embarked on a journey into the world of data science...
+                My journey to data science began with a Medical Physics and Bioengineering background. I focused early in my HealthTech career on applying quantitative analysis to improve clinical outcomes. I spent five years developing predictive models and data pipelines from device and patient data, with direct impact on clinical trial efficiency and medical device safety. This experience further cemented my understanding of how data could address significant real-world issues in complex, regulated environments.
               </p>
               <p>
-                My philosophy centers around not just building models, but understanding the context, ensuring ethical considerations, and delivering solutions that provide tangible value...
+                Seeking to apply data insights in a different domain, I moved into a role with a focus on People Analytics and internal communication. Within the role, I used SQL and BI tools to analyse engagement and platform metrics, providing insights that guided the optimisation of communications strategies and improved employee experience through data-driven mechanisms for feedback. This experience broadened my knowledge of the application of data to understand and influence organisational dynamics.
               </p>
-              {/* Add more paragraphs as needed */}
+              <p>
+                Inspired by a desire to expand my technical expertise and develop more resilient, scalable applications using new methods, I recently completed an immersive Data Analytics bootcamp. This formal training, combined with my independent project work—researching environmental justice through geospatial analysis and developing an MLOps pipeline for healthcare prediction—is my ongoing field of study. I enjoy utilising state-of-the-art machine learning, MLOps best practices (including Docker, MLflow, and CI/CD paradigms), and techniques such as interpretable ML (SHAP) to solve complex problems, particularly where technology intersects with environmental sustainability and healthcare equity.
+              </p>
+              <p>
+                My guiding principle is to offer complete, efficient solutions. I am dedicated to thoroughly understanding the context of the issue, developing models that are not only accurate but also interpretable and sustainable, and ensuring that data insights translate into measurable results and responsible innovation. I enjoy multidisciplinary collaboration and anticipate applying my skills to a challenging mid-level role where I can contribute to meaningful projects and continue to grow professionally.
+              </p>
             </div>
           </section>
           {/* Technical Skills section is now correctly inside motion.div */}
