@@ -46,21 +46,21 @@ export function ProjectCard({ title, description, imageUrl, tags, liveUrl, repoU
                     {/* Optional: Subtle gradient overlay */}
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-50"></div>
                 </div>
-                <div className="flex h-full flex-col p-5 md:p-6"> {/* Content padding */}
+                <div className="flex flex-col p-5 md:p-6"> {/* Content padding, removed h-full */}
                     {/* Make title the primary link to liveUrl */}
                     <a href={primaryLink} target="_blank" rel="noopener noreferrer" className="mb-2 text-lg font-semibold text-gray-900 hover:text-primary dark:text-white dark:hover:text-primary-light md:text-xl transition-colors">
                         {title}
                     </a> {/* Close title link */}
                     <p className="mb-4 flex-grow text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{description}</p> {/* line-clamp limits description lines */}
                     <div className="mb-4 flex flex-wrap gap-2">
-                        {tags.slice(0, 3).map((tag) => ( // Show only first few tags
+                        {tags.slice(0, 4).map((tag) => ( // Show up to 4 tags
                             <span key={tag} className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary-dark dark:bg-primary/20 dark:text-primary-light">
                                 {tag}
                             </span>
                         ))}
-                        {tags.length > 3 && (
+                        {tags.length > 4 && ( // Update condition for "+X more"
                              <span className="rounded-full bg-neutral-light/60 px-2.5 py-0.5 text-xs font-medium text-neutral-dark/70 dark:bg-neutral-dark/50 dark:text-neutral-light/70">
-                                +{tags.length - 3} more
+                                +{tags.length - 4} more
                             </span>
                         )}
                     </div>

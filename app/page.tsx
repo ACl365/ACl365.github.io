@@ -10,7 +10,7 @@ const featuredProjects = [
   {
     slug: 'environmental-justice',
     title: 'Environmental Justice Analysis',
-    description: 'Analyzed spatial patterns of environmental hazards and demographic factors in England using geospatial data and machine learning techniques to identify potential environmental justice disparities.',
+    description: 'Built an end-to-end geospatial & ML pipeline (Python, GeoPandas, Scikit-learn, PySAL) applying spatial statistics, clustering, and predictive modelling to analyse environmental justice disparities in the UK.',
     imageUrl: '/images/env-justice-lisa-clusters.png', // Updated image URL
     tags: ['Geospatial', 'Python', 'Data Analysis', 'Social Impact'],
     liveUrl: 'http://alexander-clarke.com/england-environmental-justice-analysis/', // Added live URL
@@ -19,9 +19,9 @@ const featuredProjects = [
   {
     slug: 'mimic-mlops',
     title: 'MIMIC MLOps Pipeline',
-    description: 'Developed and deployed an MLOps pipeline using Kubeflow on GCP for predicting patient outcomes based on the MIMIC critical care database, focusing on reproducibility and monitoring.',
+    description: 'Engineered an MLOps pipeline PoC (Python, Scikit-learn, MLflow, Docker, FastAPI) using MIMIC data for predicting hospital readmissions, focusing on reproducibility, experiment tracking, and deployment.',
     imageUrl: '/images/imbalance_metrics_comparison.png', // Use single image URL
-    tags: ['MLOps', 'Healthcare', 'Python', 'Kubeflow'],
+    tags: ['Healthcare', 'Readmission Prediction', 'Imbalance Handling', 'SHAP'], // Updated tags to avoid description overlap
     liveUrl: 'http://alexander-clarke.com/MIMIC_demo/', // Added live URL
     repoUrl: 'https://github.com/ACl365/MIMIC-demo', // Correct Repo URL
   },
