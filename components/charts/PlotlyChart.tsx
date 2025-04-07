@@ -32,7 +32,7 @@ const PlotlyChart: React.FC<PlotlyChartProps> = ({
         plot_bgcolor: 'rgba(0,0,0,0)', // Transparent plot area
         font: {
             family: 'var(--font-inter)', // Use CSS variable for font consistency
-            color: '#333', // Default text color (adjust for dark mode later)
+            color: '#333', // Default text colour (adjust for dark mode later)
         },
         // Add other default layout options if desired
     };

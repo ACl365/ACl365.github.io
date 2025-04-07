@@ -11,7 +11,7 @@ const featuredProjects = [
     slug: 'environmental-justice',
     title: 'Environmental Justice Analysis',
     description: 'Leveraging geospatial data and ML to identify disparities.',
-    imageUrl: '/images/propensity_scores_high_NO2.png', // Use single image URL
+    imageUrl: '/images/env-justice-lisa-clusters.png', // Updated image URL
     tags: ['Geospatial', 'Python', 'Data Analysis', 'Social Impact'],
     liveUrl: 'http://alexander-clarke.com/england-environmental-justice-analysis/', // Added live URL
   },
@@ -31,32 +31,32 @@ const skillCategories = [
   {
     name: 'Languages & Databases',
     icon: <Code size={20} className="mr-2" />,
-    skills: ['Python', 'SQL', 'R', 'Bash'],
+    skills: ['Python', 'SQL'], // Simplified from CV
   },
   {
     name: 'ML & Data Science',
     icon: <BrainCircuit size={20} className="mr-2" />,
-    skills: ['Scikit-learn', 'Pandas', 'NumPy', 'Statsmodels', 'Jupyter', 'TensorFlow/Keras', 'PyTorch'],
+    skills: ['Scikit-learn', 'Pandas', 'NumPy', 'Statsmodels', 'Predictive Modeling', 'SHAP'], // Key items from CV
   },
    {
     name: 'Geospatial Analysis',
     icon: <Map size={20} className="mr-2" />,
-    skills: ['GeoPandas', 'Rasterio', 'Shapely', 'QGIS', 'PostGIS'],
+    skills: ['GeoPandas', 'PySAL', 'QGIS'], // Key items from CV
   },
   {
     name: 'MLOps & Engineering',
     icon: <Wrench size={20} className="mr-2" />,
-    skills: ['Docker', 'Kubernetes', 'Kubeflow', 'MLflow', 'Airflow', 'Git', 'CI/CD'],
+    skills: ['Docker', 'MLflow', 'FastAPI', 'CI/CD (GitHub Actions)', 'Git', 'Monitoring'], // Key items from CV
   },
   {
     name: 'Cloud & Platforms',
     icon: <Cloud size={20} className="mr-2" />,
-    skills: ['AWS (S3, EC2, SageMaker)', 'GCP (GCS, Compute Engine, Vertex AI)', 'Azure'],
+    skills: ['GCP (BigQuery, Cloud Storage)'], // From CV (only GCP mentioned)
   },
   {
-    name: 'Visualization',
+    name: 'Visualisation',
     icon: <BarChartHorizontalBig size={20} className="mr-2" />,
-    skills: ['Matplotlib', 'Seaborn', 'Plotly', 'Tableau'],
+    skills: ['Plotly', 'Matplotlib', 'Seaborn', 'Power BI', 'Tableau', 'Streamlit'], // From CV
   },
 ];
 // Animation variants for staggering children

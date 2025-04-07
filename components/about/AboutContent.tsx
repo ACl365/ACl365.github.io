@@ -7,12 +7,13 @@ import { motion } from 'framer-motion';
 
 // Placeholder skills data (reuse/adapt from homepage or define specifically for about page)
 const detailedSkills = [
-    { category: 'Data Science & Machine Learning', skills: ['Predictive Modeling', 'Classification', 'Regression', 'Clustering', 'NLP Basics', 'Time Series Analysis', 'Statistical Inference'] },
-    { category: 'MLOps & Engineering', skills: ['Pipeline Automation (Kubeflow/Airflow)', 'Model Deployment', 'Monitoring', 'Docker', 'Kubernetes', 'CI/CD (GitHub Actions)', 'Experiment Tracking (MLflow)'] },
-    { category: 'Programming & Databases', skills: ['Python (Pandas, NumPy, Scikit-learn)', 'SQL (PostgreSQL, BigQuery)', 'R (Basic)', 'Bash Scripting'] },
-    { category: 'Geospatial Analysis', skills: ['GeoPandas', 'Rasterio', 'Shapely', 'PostGIS', 'QGIS'] },
-    { category: 'Cloud Platforms', skills: ['AWS (SageMaker, S3, EC2)', 'GCP (Vertex AI, GCS, Compute Engine)', 'Azure (ML Studio)'] },
-    { category: 'Tools & Visualization', skills: ['Git', 'Jupyter', 'VS Code', 'Matplotlib', 'Seaborn', 'Plotly', 'Tableau (Basic)'] },
+    { category: 'Languages & Databases', skills: ['Python (Pandas, NumPy, Scikit-learn, Statsmodels, GeoPandas, FastAPI, Plotly, Matplotlib, Seaborn, Streamlit)', 'SQL (Advanced Queries, Google BigQuery, PostgreSQL/SQL Server exposure)'] },
+    { category: 'Data Analysis & Machine Learning', skills: ['Statistical Modeling', 'Predictive Modeling (Regression, Classification: Logistic Regression, Random Forest, Gradient Boosting)', 'Clustering (K-Means)', 'Feature Engineering', 'Time-Series Analysis', 'Experimentation (A/B Testing)', 'Model Evaluation & Interpretation (SHAP)', 'Imbalance Handling (SMOTE)'] },
+    { category: 'Geospatial Analysis', skills: ['GeoPandas', 'PySAL', 'PostGIS (Exposure via SQL)', 'QGIS (Conceptual)'] }, // Combined relevant skills
+    { category: 'Cloud Platforms & MLOps', skills: ['Google Cloud Platform (GCP) (BigQuery, Cloud Storage)', 'MLflow (Experiment Tracking, Model Logging)', 'Docker (Containerisation)', 'FastAPI (API Deployment)', 'CI/CD Pipeline Design (GitHub Actions - conceptual/basic)', 'Monitoring Strategy (Data Drift, Concept Drift, Operational)'] }, // Merged Cloud & MLOps
+    { category: 'Data Visualisation & BI', skills: ['Power BI', 'Looker', 'Tableau', 'Matplotlib', 'Seaborn', 'Plotly', 'Streamlit'] }, // Added Streamlit
+    { category: 'Methodologies & Tools', skills: ['ETL/ELT Processes', 'Data Wrangling', 'Stakeholder Management', 'Agile Methodologies', 'Version Control (Git/GitHub)', 'Jupyter', 'VS Code'] }, // Added common tools
+    { category: 'Advanced Techniques & Emerging AI', skills: ['Interpretable ML (SHAP)', 'Causal Inference Methods (Propensity Score Matching)', 'LLM/RAG Exploration'] }
 ];
 
 // Simple fade-in-up animation variant (can share this via a utils file later)

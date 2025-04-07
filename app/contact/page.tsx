@@ -23,33 +23,18 @@ export default function ContactPage() {
         <div className="space-y-6">
           {/* Email */}
           <a
-            href="mailto:your.email@example.com" // **ACTION:** Replace with your email
+            href="mailto:alexanderclarke365@gmail.com"
             className="flex items-center rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-all hover:shadow-md dark:border-gray-700 dark:bg-gray-800"
           >
             <Mail className="mr-4 h-6 w-6 text-primary dark:text-primary-light" />
             <div>
               <h2 className="font-semibold text-gray-800 dark:text-white">Email</h2>
               <p className="text-sm text-gray-600 hover:underline dark:text-gray-400">
-                your.email@example.com {/* **ACTION:** Replace with your email */}
+                alexanderclarke365@gmail.com
               </p>
             </div>
           </a>
 
-          {/* LinkedIn */}
-          <Link
-            href="https://linkedin.com/in/your-profile-url" // **ACTION:** Replace with your LinkedIn URL
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-all hover:shadow-md dark:border-gray-700 dark:bg-gray-800"
-          >
-            <Linkedin className="mr-4 h-6 w-6 text-primary dark:text-primary-light" />
-            <div>
-              <h2 className="font-semibold text-gray-800 dark:text-white">LinkedIn</h2>
-              <p className="text-sm text-gray-600 hover:underline dark:text-gray-400">
-                Connect on LinkedIn
-              </p>
-            </div>
-          </Link>
 
           {/* GitHub */}
           <Link
