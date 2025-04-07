@@ -28,37 +28,37 @@ const featuredProjects = [
   // Add more featured projects if needed
 ];
 
-// Placeholder skills grouped by category - replace/enhance later
+// More detailed skills summary for homepage
 const skillCategories = [
   {
     name: 'Languages & Databases',
     icon: <Code size={20} className="mr-2" />,
-    skills: ['Python', 'SQL'], // Core languages
+    skills: ['Python (Pandas, Scikit-learn)', 'SQL (BigQuery)', 'NumPy', 'Statsmodels'], // More core Python libs + BigQuery
   },
   {
-    name: 'ML & Data Science',
+    name: 'ML & Data Analysis',
     icon: <BrainCircuit size={20} className="mr-2" />,
-    skills: ['Python (Pandas, Scikit-learn, Statsmodels)', 'Predictive Modeling', 'Clustering', 'SHAP'], // Core ML & libraries
+    skills: ['Predictive Modeling (Regression, Classification)', 'Clustering', 'Feature Engineering', 'Model Evaluation (SHAP)', 'A/B Testing'], // Key ML concepts & SHAP
   },
    {
     name: 'Geospatial Analysis',
     icon: <Map size={20} className="mr-2" />,
-    skills: ['GeoPandas', 'PySAL', 'Spatial Statistics'], // Key geospatial tools
+    skills: ['GeoPandas', 'PySAL', 'Spatial Statistics', 'QGIS'], // Removed (Conceptual)
   },
   {
-    name: 'MLOps & Engineering',
-    icon: <Wrench size={20} className="mr-2" />,
-    skills: ['MLflow', 'Docker', 'FastAPI', 'CI/CD Concepts', 'Git', 'Monitoring Principles'], // MLOps & Engineering tools
-  },
-  {
-    name: 'Cloud & Platforms',
+    name: 'Cloud & MLOps',
     icon: <Cloud size={20} className="mr-2" />,
-    skills: ['GCP (BigQuery, Cloud Storage)'], // Cloud platforms
+    skills: ['GCP (BigQuery, Storage)', 'MLflow', 'Docker', 'FastAPI', 'CI/CD (GitHub Actions)', 'Monitoring Principles'], // Added Storage, GitHub Actions explicitly
   },
   {
-    name: 'Visualisation',
+    name: 'Visualisation & BI',
     icon: <BarChartHorizontalBig size={20} className="mr-2" />,
-    skills: ['Plotly', 'Streamlit', 'Power BI', 'Matplotlib/Seaborn'], // Key visualisation tools
+    skills: ['Plotly', 'Streamlit', 'Power BI', 'Tableau', 'Matplotlib/Seaborn'], // Added Tableau back
+  },
+    {
+    name: 'Advanced Techniques',
+    icon: <Wrench size={20} className="mr-2" />,
+    skills: ['Interpretable ML (SHAP)', 'Causal Inference (PSM)', 'Time-Series', 'LLM/RAG Exploration'], // Added Time-Series, PSM
   },
 ];
 // Animation variants for staggering children
@@ -91,7 +91,7 @@ export default function Home() {
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             href="#projects"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-base font-medium text-white shadow-sm transition-colors hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+            className="text-base font-medium text-primary hover:underline dark:text-primary-light"
           >
             View Projects
           </Link>
@@ -195,7 +195,7 @@ export default function Home() {
         </p>
         <Link
           href="/contact" // Link to the Contact page (to be created)
-          className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-base font-medium text-white shadow-sm transition-colors hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+          className="text-base font-medium text-primary hover:underline dark:text-primary-light"
         >
           Get In Touch
         </Link>
