@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Mail, Linkedin, Github } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: "Contact Me | Alex's Portfolio", // Update with your name
-  description: "Get in touch with Alex to discuss collaborations, opportunities, or data science.", // Update description
+  title: "Contact Me | Alexander's Portfolio", // Update with your name
+  description: "Get in touch with Alexander to discuss collaborations, opportunities, or data science.", // Update description
 };
 
 export default function ContactPage() {

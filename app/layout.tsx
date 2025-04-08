@@ -3,8 +3,7 @@ import { Inter, Montserrat } from "next/font/google"; // Import Montserrat
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-// import { AnimatePresence } from 'framer-motion'; // For page transitions later
-
+// import { AnimatePresence } from 'framer-motion'; 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter", // Variable for body font
@@ -18,8 +17,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Alex's Data Science Portfolio", // Update with your name/title
-  description: "Showcasing projects in Data Science, MLOps, and Environmental Impact.", // Update description
+  title: "Alexander's Data Science Portfolio", 
+  description: "Showcasing projects in Data Science, MLOps, and Environmental Impact.", 
 };
 
 export default function RootLayout({

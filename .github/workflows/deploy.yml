@@ -35,8 +35,10 @@ jobs:
           cache: 'npm' # Or 'yarn', 'pnpm' depending on your lock file
       - name: Install dependencies
         run: npm ci # Use 'npm install' if you don't have package-lock.json, or yarn/pnpm equivalent
-      - name: Build
-        run: npm run build
+      # --- MODIFIED STEP ---
+      - name: Build and Export
+        run: npm run export # Use the new export script from package.json
+      # --- END MODIFIED STEP ---
       - name: Add CNAME to output directory
         run: echo "alexander-clarke.com" > ./out/CNAME
       - name: Setup Pages

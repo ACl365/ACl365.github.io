@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: 'export', // Temporarily removed for standard Vercel deployment
-  // images: { // No longer needed without output: 'export'
-  //   unoptimized: true,
-  // },
+  output: 'export', // Required for next export
+  images: { // Required for static export on GitHub Pages
+    unoptimized: true,
+  },
   // Disable ESLint checks during build
   eslint: {
     ignoreDuringBuilds: true,

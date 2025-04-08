@@ -4,8 +4,8 @@ import AboutContent from '@/components/about/AboutContent'; // Import the new cl
 
 // Export metadata from the Server Component
 export const metadata: Metadata = {
-  title: "About Me | Alex's Portfolio", // Update with your name
-  description: "Learn more about Alex's background, skills, and approach to data science.", // Update description
+  title: "About Me | Alexander's Portfolio", // Update with your name
+  description: "Learn more about Alexander's background, skills, and approach to data science.", // Update description
 };
 
 // Render the Client Component which contains the actual page content and animations

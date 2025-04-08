@@ -27,15 +27,15 @@ export function Header() {
       }`}
     >
       <nav className="container mx-auto flex items-center justify-between px-4 py-4 md:px-6">
-        <Link href="/" className="text-lg font-bold">
+        <Link href="/" className={`text-lg font-bold hover:text-primary-dark dark:hover:text-primary-light transition-colors ${!isScrolled ? 'text-black dark:text-white' : 'text-gray-800 dark:text-gray-200'}`}> {/* Conditional color */}
           Alexander Clarke {/* Update with your name/brand */}
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden space-x-6 md:flex">
-          <Link href="/#projects" className="hover:text-primary-dark dark:hover:text-primary-light transition-colors">Projects</Link>
-          <Link href="/about" className="hover:text-primary-dark dark:hover:text-primary-light transition-colors">About</Link>
-          <Link href="/contact" className="hover:text-primary-dark dark:hover:text-primary-light transition-colors">Contact</Link>
+          <Link href="/#projects" className={`hover:text-primary-dark dark:hover:text-primary-light transition-colors ${!isScrolled ? 'text-black dark:text-white' : 'text-gray-800 dark:text-gray-200'}`}>Projects</Link> {/* Conditional color */}
+          <Link href="/about" className={`hover:text-primary-dark dark:hover:text-primary-light transition-colors ${!isScrolled ? 'text-black dark:text-white' : 'text-gray-800 dark:text-gray-200'}`}>About</Link> {/* Conditional color */}
+          <Link href="/contact" className={`hover:text-primary-dark dark:hover:text-primary-light transition-colors ${!isScrolled ? 'text-black dark:text-white' : 'text-gray-800 dark:text-gray-200'}`}>Contact</Link> {/* Conditional color */}
         </div>
 
         {/* Mobile Menu Button */}
@@ -51,9 +51,9 @@ export function Header() {
       {isMobileMenuOpen && (
         <div className="absolute left-0 top-full w-full bg-white shadow-lg dark:bg-gray-900 md:hidden">
           <div className="flex flex-col space-y-4 p-4">
-            <Link href="/#projects" className="hover:text-primary-dark dark:hover:text-primary-light transition-colors" onClick={toggleMobileMenu}>Projects</Link>
-            <Link href="/about" className="hover:text-primary-dark dark:hover:text-primary-light transition-colors" onClick={toggleMobileMenu}>About</Link>
-            <Link href="/contact" className="hover:text-primary-dark dark:hover:text-primary-light transition-colors" onClick={toggleMobileMenu}>Contact</Link>
+            <Link href="/#projects" className="block py-2 text-black dark:text-white hover:text-primary-dark dark:hover:text-primary-light transition-colors" onClick={toggleMobileMenu}>Projects</Link> {/* Use pure black/white */}
+            <Link href="/about" className="block py-2 text-black dark:text-white hover:text-primary-dark dark:hover:text-primary-light transition-colors" onClick={toggleMobileMenu}>About</Link> {/* Use pure black/white */}
+            <Link href="/contact" className="block py-2 text-black dark:text-white hover:text-primary-dark dark:hover:text-primary-light transition-colors" onClick={toggleMobileMenu}>Contact</Link> {/* Use pure black/white */}
           </div>
         </div>
       )}
