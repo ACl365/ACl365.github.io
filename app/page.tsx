@@ -8,7 +8,7 @@ import { Code, Database, BrainCircuit, Cloud, Wrench, Map, BarChartHorizontalBig
 // Placeholder data for featured projects - replace with actual data fetching later
 const featuredProjects = [
   {
-    slug: 'environmental-justice',
+    slug: 'england-environmental-justice-analysis', // Corrected slug
     title: 'Environmental Justice Analysis',
     description: 'Built an end-to-end geospatial & ML pipeline (Python, GeoPandas, Scikit-learn, PySAL) applying spatial statistics, clustering, and predictive modelling to analyse environmental justice disparities in the UK.',
     imageUrl: '/images/env-justice-lisa-clusters.png', // Updated image URL
@@ -17,7 +17,7 @@ const featuredProjects = [
     repoUrl: 'https://github.com/ACl365/england-environmental-justice-analysis', // Correct Repo URL
   },
   {
-    slug: 'mimic-mlops',
+    slug: 'MIMIC-demo', // Corrected slug
     title: 'MIMIC MLOps Pipeline',
     description: 'Engineered an MLOps pipeline PoC (Python, Scikit-learn, MLflow, Docker, FastAPI) using MIMIC data for predicting hospital readmissions, focusing on reproducibility, experiment tracking, and deployment.',
     imageUrl: '/images/imbalance_metrics_comparison.png', // Use single image URL

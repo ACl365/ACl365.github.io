@@ -35,17 +35,32 @@ export function ProjectCard({ slug, title, description, imageUrl, tags, liveUrl,
         >
             {/* Removed outer <a> tag */}
             <div className="flex h-full flex-col"> {/* Use a div for layout */}
-                {/* Single Image Container - Using standard <img> tag */}
-                <div className="relative w-full overflow-hidden aspect-video bg-gray-100 dark:bg-gray-700"> {/* Added background color */}
-                    <img
-                        src={imageUrl}
-                        alt={`Featured image for ${title}`}
-                        className="absolute inset-0 h-full w-full object-contain transition-transform duration-500 ease-in-out group-hover:scale-105" // Use object-contain to prevent cropping
-                        loading="lazy" // Add lazy loading
-                    />
-                    {/* Optional: Subtle gradient overlay */}
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-50"></div>
-                </div>
+                {/* Wrap Image Container with appropriate link */}
+                {isInternalLink ? (
+                    <Link href={primaryHref} className="block"> {/* Use block to make div clickable */}
+                        <div className="relative w-full overflow-hidden aspect-video bg-gray-100 dark:bg-gray-700">
+                            <img
+                                src={imageUrl}
+                                alt={`Featured image for ${title}`}
+                                className="absolute inset-0 h-full w-full object-contain transition-transform duration-500 ease-in-out group-hover:scale-105"
+                                loading="lazy"
+                            />
+                            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-50"></div>
+                        </div>
+                    </Link>
+                ) : (
+                    <a href={primaryHref} target="_blank" rel="noopener noreferrer" className="block"> {/* Use block to make div clickable */}
+                         <div className="relative w-full overflow-hidden aspect-video bg-gray-100 dark:bg-gray-700">
+                            <img
+                                src={imageUrl}
+                                alt={`Featured image for ${title}`}
+                                className="absolute inset-0 h-full w-full object-contain transition-transform duration-500 ease-in-out group-hover:scale-105"
+                                loading="lazy"
+                            />
+                            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-50"></div>
+                        </div>
+                    </a>
+                )}
                 <div className="flex flex-col p-5 md:p-6"> {/* Content padding, removed h-full */}
                     {/* Make title the primary link to liveUrl */}
                     {/* Use Next Link for internal, regular <a> for external */}
