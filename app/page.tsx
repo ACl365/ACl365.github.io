@@ -1,9 +1,10 @@
-// 'use client'; // Temporarily removed to test server component rendering
+'use client'; // Re-enabled for Framer Motion
 
 import Link from 'next/link';
 import { ProjectCard } from '@/components/ProjectCard';
-// import { motion } from 'framer-motion'; // Removed motion import
+import { motion } from 'framer-motion'; // Re-enabled motion import
 import { Code, Database, BrainCircuit, Cloud, Wrench, Map, BarChartHorizontalBig } from 'lucide-react'; // Icons for skills
+import HeroBackgroundAnimation from '@/components/HeroBackgroundAnimation'; // Import the new component
 
 // Placeholder data for featured projects - replace with actual data fetching later
 const featuredProjects = [
@@ -32,32 +33,32 @@ const featuredProjects = [
 const skillCategories = [
   {
     name: 'Languages & Databases',
-    icon: <Code size={20} className="mr-2" />,
+    icon: <Code size={24} className="mr-2 text-primary dark:text-primary-light" />, // Increased size & colored icon
     skills: ['Python (Pandas, Scikit-learn)', 'SQL (BigQuery)', 'NumPy', 'Statsmodels'], // More core Python libs + BigQuery
   },
   {
     name: 'ML & Data Analysis',
-    icon: <BrainCircuit size={20} className="mr-2" />,
+    icon: <BrainCircuit size={24} className="mr-2 text-primary dark:text-primary-light" />, // Increased size & colored icon
     skills: ['Predictive Modeling (Regression, Classification)', 'Clustering', 'Feature Engineering', 'Model Evaluation (SHAP)', 'A/B Testing'], // Key ML concepts & SHAP
   },
    {
     name: 'Geospatial Analysis',
-    icon: <Map size={20} className="mr-2" />,
+    icon: <Map size={24} className="mr-2 text-primary dark:text-primary-light" />, // Increased size & colored icon
     skills: ['GeoPandas', 'PySAL', 'Spatial Statistics', 'QGIS'], // Removed (Conceptual)
   },
   {
     name: 'Cloud & MLOps',
-    icon: <Cloud size={20} className="mr-2" />,
+    icon: <Cloud size={24} className="mr-2 text-primary dark:text-primary-light" />, // Increased size & colored icon
     skills: ['GCP (BigQuery, Storage)', 'MLflow', 'Docker', 'FastAPI', 'CI/CD (GitHub Actions)', 'Monitoring Principles'], // Added Storage, GitHub Actions explicitly
   },
   {
     name: 'Visualisation & BI',
-    icon: <BarChartHorizontalBig size={20} className="mr-2" />,
+    icon: <BarChartHorizontalBig size={24} className="mr-2 text-primary dark:text-primary-light" />, // Increased size & colored icon
     skills: ['Plotly', 'Streamlit', 'Power BI', 'Tableau', 'Matplotlib/Seaborn'], // Added Tableau back
   },
     {
     name: 'Advanced Techniques',
-    icon: <Wrench size={20} className="mr-2" />,
+    icon: <Wrench size={24} className="mr-2 text-primary dark:text-primary-light" />, // Increased size & colored icon
     skills: ['Interpretable ML (SHAP)', 'Causal Inference (PSM)', 'Time-Series', 'LLM/RAG Exploration'], // Added Time-Series, PSM
   },
 ];
@@ -72,18 +73,27 @@ const staggerContainer = {
   },
 };
 
-// Removed fadeInUp animation variant as motion components are removed
+// Animation variant for individual items fading in
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
 
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-12 md:px-6 md:py-16 lg:py-24">
       {/* Hero Section */}
-      {/* Replaced motion.section with section */}
-      <section
-        className="mb-16 text-center md:mb-24 lg:mb-32"
+      <motion.section
+        className="relative mb-16 text-center md:mb-24 lg:mb-32 overflow-hidden" // Added relative positioning and overflow hidden
+        initial="hidden"
+        animate="visible"
+        variants={fadeInUp} // Apply fade-in to the whole section
       >
+        <HeroBackgroundAnimation /> {/* Add the animation component */}
+        {/* Wrap content in a relative div with z-index */}
+        <div className="relative z-10">
         <h1 className="mb-4 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl">
-          Driving Environmental & Healthcare Impact with Data Science
+          Innovating Environmental & Healthcare Solutions Through Data Science
         </h1>
         <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-600 dark:text-gray-400 md:text-xl">
           Applying machine learning, MLOps, and data analysis techniques to solve complex challenges in environmental science and healthcare.
@@ -103,23 +113,24 @@ export default function Home() {
             {/* <ArrowRight className="ml-2 h-5 w-5" /> */}
           </Link>
         </div>
+        </div> {/* Close the z-10 wrapper */}
         {/* Optional: Add a subtle visual element here later */}
-      </section>
+      </motion.section>
 
       {/* Featured Projects Section */}
       {/* Note: ProjectCards inside still have their own whileInView animation */}
-      <section id="projects" className="mb-16 md:mb-24 lg:mb-32 scroll-mt-20">
+      <motion.section id="projects" className="mb-16 md:mb-24 lg:mb-32 scroll-mt-20">
         <h2 className="mb-8 text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
           Featured Projects
         </h2>
-        {/* <motion.div
+        <motion.div
           className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }} // Trigger when 10% is visible
-        > */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12"> {/* Reverted to simple div */}
+        >
+        {/* Removed the extra div wrapper */}
           {featuredProjects.map((project) => (
             <ProjectCard // ProjectCard links directly to liveUrl now
               key={project.slug} // Keep key for React list rendering
@@ -132,41 +143,47 @@ export default function Home() {
               repoUrl={project.repoUrl} // Pass the repoUrl prop
             />
           ))}
-        {/* </motion.div> */}
-        </div> {/* Closing the simple div */}
-      </section>
+        </motion.div>
+        {/* Removed the extra closing div */}
+      </motion.section>
 
       {/* Skills/Expertise Snapshot */}
-      {/* Replaced motion.section with section */}
-      <section
-        className="mb-16 md:mb-24 lg:mb-32"
+      <motion.section
+        className="mb-16 rounded-lg bg-gradient-to-br from-white via-secondary to-white py-12 dark:from-gray-900 dark:via-gray-800/50 dark:to-gray-900 md:mb-24 lg:mb-32 lg:py-16" // Added padding and subtle gradient
+        initial="hidden"
+        whileInView="visible"
+        variants={staggerContainer} // Stagger skill categories
+        viewport={{ once: true, amount: 0.1 }}
       >
         <h2 className="mb-8 text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
           Skills & Expertise
         </h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map((category) => (
-            <div key={category.name} className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+            <motion.div key={category.name} variants={fadeInUp} className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-shadow duration-300 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:shadow-primary/20">
               <h3 className="mb-4 flex items-center text-lg font-semibold text-gray-800 dark:text-white">
                 {category.icon}
                 {category.name}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
-                  <span key={skill} className="rounded-md bg-primary/10 px-2.5 py-0.5 text-sm font-medium text-primary dark:bg-primary-light/15 dark:text-primary-light">
+                  <span key={skill} className="rounded-md bg-primary/10 px-2.5 py-0.5 text-sm font-medium text-primary transition-colors duration-200 hover:bg-primary hover:text-white dark:bg-primary-light/15 dark:text-primary-light dark:hover:bg-primary-light dark:hover:text-gray-900">
                     {skill}
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* About Me Snippet */}
-      {/* Replaced motion.section with section */}
-      <section
+      <motion.section
         className="mb-16 rounded-lg bg-gray-50 p-8 text-center dark:bg-gray-800/50 md:mb-24 lg:mb-32"
+        initial="hidden"
+        whileInView="visible"
+        variants={fadeInUp}
+        viewport={{ once: true, amount: 0.2 }}
       >
         <h2 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
           About Me
@@ -180,12 +197,15 @@ export default function Home() {
         >
           Read My Full Story &rarr;
         </Link>
-      </section>
+      </motion.section>
 
       {/* Call to Action (Contact) */}
-      {/* Replaced motion.section with section */}
-      <section
+      <motion.section
         className="text-center"
+        initial="hidden"
+        whileInView="visible"
+        variants={fadeInUp}
+        viewport={{ once: true, amount: 0.2 }}
       >
         <h2 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
           Let's Connect
@@ -199,7 +219,7 @@ export default function Home() {
         >
           Get In Touch
         </Link>
-      </section>
+      </motion.section>
     </div>
   );
 }
