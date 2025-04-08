@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${montserrat.variable} scroll-smooth`}>
       <body
-        className={`font-sans antialiased bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 flex flex-col min-h-screen`} // font-sans will use the default sans defined in tailwind.config
+        className={`font-sans antialiased bg-white text-gray-900 flex flex-col min-h-screen`} // Removed dark mode classes
       >
         <Header />
         <main className="flex-grow">
