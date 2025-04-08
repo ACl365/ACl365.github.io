@@ -39,10 +39,6 @@ jobs:
       - name: Build and Export
         run: npm run export # Use the new export script from package.json
       # --- END MODIFIED STEP ---
-      - name: Create output directory if needed
-        run: mkdir -p ./out
-      - name: Add CNAME to output directory
-        run: echo "alexander-clarke.com" > ./out/CNAME
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
