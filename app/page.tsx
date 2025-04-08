@@ -123,12 +123,12 @@ export default function Home() {
           {featuredProjects.map((project) => (
             <ProjectCard // ProjectCard links directly to liveUrl now
               key={project.slug} // Keep key for React list rendering
-              // slug={project.slug} // Removed slug prop
+              slug={project.slug} // Pass slug for internal linking
               title={project.title}
               description={project.description}
               imageUrl={project.imageUrl} // Pass the single URL
               tags={project.tags}
-              liveUrl={project.liveUrl} // Pass the liveUrl prop
+              // liveUrl={project.liveUrl} // Remove liveUrl for homepage cards, use slug instead
               repoUrl={project.repoUrl} // Pass the repoUrl prop
             />
           ))}

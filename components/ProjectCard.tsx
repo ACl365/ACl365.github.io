@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { Github } from 'lucide-react'; // Import Github icon
 
 interface ProjectCardProps {
-    // slug: string; // Removed slug as we link directly to liveUrl
+    slug: string; // Re-added slug for internal project page links
     title: string;
     description: string;
     imageUrl: string; // Use single image URL
@@ -21,10 +21,10 @@ const cardVariants = {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-export function ProjectCard({ title, description, imageUrl, tags, liveUrl, repoUrl }: ProjectCardProps) { // Added repoUrl prop
-    // Use liveUrl as the primary link, default to '#' if not provided
-    const primaryLink = liveUrl || '#';
-
+export function ProjectCard({ slug, title, description, imageUrl, tags, liveUrl, repoUrl }: ProjectCardProps) { // Added slug prop back
+    // Determine the link: use slug for internal, liveUrl for external, fallback to '#'
+    const primaryHref = slug ? `/${slug}` : (liveUrl || '#');
+    const isInternalLink = !!slug;
     return (
         <motion.div
             variants={cardVariants} // Apply variants via parent for staggered effect
@@ -48,9 +48,16 @@ export function ProjectCard({ title, description, imageUrl, tags, liveUrl, repoU
                 </div>
                 <div className="flex flex-col p-5 md:p-6"> {/* Content padding, removed h-full */}
                     {/* Make title the primary link to liveUrl */}
-                    <a href={primaryLink} target="_blank" rel="noopener noreferrer" className="mb-2 text-lg font-semibold text-gray-900 hover:text-primary dark:text-white dark:hover:text-primary-light md:text-xl transition-colors">
-                        {title}
-                    </a> {/* Close title link */}
+                    {/* Use Next Link for internal, regular <a> for external */}
+                    {isInternalLink ? (
+                        <Link href={primaryHref} className="mb-2 text-lg font-semibold text-gray-900 hover:text-primary dark:text-white dark:hover:text-primary-light md:text-xl transition-colors">
+                            {title}
+                        </Link>
+                    ) : (
+                        <a href={primaryHref} target="_blank" rel="noopener noreferrer" className="mb-2 text-lg font-semibold text-gray-900 hover:text-primary dark:text-white dark:hover:text-primary-light md:text-xl transition-colors">
+                            {title}
+                        </a>
+                    )}
                     <p className="mb-4 flex-grow text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{description}</p> {/* line-clamp limits description lines */}
                     <div className="mb-4 flex flex-wrap gap-2">
                         {tags.slice(0, 4).map((tag) => ( // Show up to 4 tags
