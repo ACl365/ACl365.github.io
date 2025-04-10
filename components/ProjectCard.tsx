@@ -51,9 +51,10 @@ const getTagIcon = (tag: string) => {
 };
 
 export function ProjectCard({ slug, title, description, imageUrl, tags, liveUrl, repoUrl }: ProjectCardProps) { // Added slug prop back
-    // Determine the link: use slug for internal, liveUrl for external, fallback to '#'
-    const primaryHref = slug ? `/${slug}` : (liveUrl || '#');
-    const isInternalLink = !!slug;
+    // Determine the link: prioritize liveUrl if available, then slug, then fallback
+    const primaryHref = liveUrl || (slug ? `/${slug}` : '#');
+    // Determine if the primary link is internal (slug-based and no liveUrl) or external
+    const isExternalLink = !!liveUrl;
     return (
         <motion.div
             variants={cardVariants} // Apply variants via parent for staggered effect
@@ -66,8 +67,9 @@ export function ProjectCard({ slug, title, description, imageUrl, tags, liveUrl,
             {/* Removed outer <a> tag */}
             <div className="flex h-full flex-col"> {/* Use a div for layout */}
                 {/* Wrap Image Container with appropriate link */}
-                {isInternalLink ? (
-                    <Link href={primaryHref} className="block"> {/* Use block to make div clickable */}
+                {/* Link wrapper for the image */}
+                {isExternalLink ? (
+                     <a href={primaryHref} target="_blank" rel="noopener noreferrer" className="block">
                         <div className="relative w-full overflow-hidden aspect-video bg-gray-100 dark:bg-gray-700">
                             <img
                                 src={imageUrl}
@@ -77,9 +79,9 @@ export function ProjectCard({ slug, title, description, imageUrl, tags, liveUrl,
                             />
                             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-50"></div>
                         </div>
-                    </Link>
+                    </a>
                 ) : (
-                    <a href={primaryHref} target="_blank" rel="noopener noreferrer" className="block"> {/* Use block to make div clickable */}
+                     <Link href={primaryHref} className="block">
                          <div className="relative w-full overflow-hidden aspect-video bg-gray-100 dark:bg-gray-700">
                             <img
                                 src={imageUrl}
@@ -89,19 +91,20 @@ export function ProjectCard({ slug, title, description, imageUrl, tags, liveUrl,
                             />
                             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-50"></div>
                         </div>
-                    </a>
+                    </Link>
                 )}
                 <div className="flex flex-col p-5 md:p-6"> {/* Content padding, removed h-full */}
                     {/* Make title the primary link to liveUrl */}
                     {/* Use Next Link for internal, regular <a> for external */}
-                    {isInternalLink ? (
-                        <Link href={primaryHref} className="mb-2 text-lg font-semibold text-gray-900 hover:text-primary dark:text-white dark:hover:text-primary-light md:text-xl transition-colors">
-                            {title}
-                        </Link>
-                    ) : (
+                    {/* Link for the title */}
+                     {isExternalLink ? (
                         <a href={primaryHref} target="_blank" rel="noopener noreferrer" className="mb-2 text-lg font-semibold text-gray-900 hover:text-primary dark:text-white dark:hover:text-primary-light md:text-xl transition-colors">
                             {title}
                         </a>
+                    ) : (
+                         <Link href={primaryHref} className="mb-2 text-lg font-semibold text-gray-900 hover:text-primary dark:text-white dark:hover:text-primary-light md:text-xl transition-colors">
+                            {title}
+                        </Link>
                     )}
                     <p className="mb-4 flex-grow text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{description}</p> {/* line-clamp limits description lines */}
                     <div className="mb-4 flex flex-wrap gap-2">
@@ -120,10 +123,10 @@ export function ProjectCard({ slug, title, description, imageUrl, tags, liveUrl,
                     {/* GitHub Link - positioned at the bottom right */}
                     {/* Links Section */}
                     <div className="mt-auto flex items-center justify-end gap-3 pt-4"> {/* Use mt-auto to push to bottom, add gap */}
-                        {/* Live Link (if not internal slug link) */}
-                        {liveUrl && !isInternalLink && (
+                        {/* Live Link (only show if different from primaryHref, i.e., if primary is internal slug link) */}
+                        {liveUrl && !isExternalLink && ( // Show only if primary link ISN'T the liveUrl already
                              <a
-                                href={liveUrl}
+                                href={liveUrl} // Still links to liveUrl
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={(e) => e.stopPropagation()}

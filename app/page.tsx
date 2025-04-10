@@ -28,7 +28,7 @@ const featuredProjects = [
   },
   {
     slug: 'clv-segmentation-dashboard', // Keep slug for consistency unless specified otherwise
-    title: 'Online Retail CLV Analysis', // Updated title from README
+    title: 'Online Retail CLV Dashboard', // Renamed to avoid duplicate "Analysis"
     description: 'Analysed the classic Online Retail dataset (2010-2011) using RFM segmentation and probabilistic models (BG/NBD, Gamma-Gamma) to predict Customer Lifetime Value. Includes an interactive dashboard.', // Updated description from README (UK spelling)
     imageUrl: '/images/clv_segementation_deep_dive.png', // Relative image path
     tags: ['Dashboard', 'CLV', 'Streamlit', 'Data Viz'], // Inferred tags
