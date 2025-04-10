@@ -26,6 +26,15 @@ const featuredProjects = [
     liveUrl: 'http://alexander-clarke.com/MIMIC_demo/', // Added live URL
     repoUrl: 'https://github.com/ACl365/MIMIC-demo', // Correct Repo URL
   },
+  {
+    slug: 'clv-segmentation-dashboard', // Keep slug for consistency unless specified otherwise
+    title: 'Online Retail CLV Analysis', // Updated title from README
+    description: 'Analysed the classic Online Retail dataset (2010-2011) using RFM segmentation and probabilistic models (BG/NBD, Gamma-Gamma) to predict Customer Lifetime Value. Includes an interactive dashboard.', // Updated description from README (UK spelling)
+    imageUrl: '/images/clv_segementation_deep_dive.png', // Relative image path
+    tags: ['Dashboard', 'CLV', 'Streamlit', 'Data Viz'], // Inferred tags
+    liveUrl: 'https://clv-dashboard-alexander.onrender.com/', // Provided live URL
+    repoUrl: 'https://github.com/ACl365/online-retail-clv-baseline' // Added repo URL
+  },
   // Add more featured projects if needed
 ];
 
@@ -167,7 +176,7 @@ export default function Home() {
               </h3>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
-                  <span key={skill} className="rounded-md bg-primary/10 px-2.5 py-0.5 text-sm font-medium text-primary transition-colors duration-200 hover:bg-primary hover:text-white dark:bg-primary-light/15 dark:text-primary-light dark:hover:bg-primary-light dark:hover:text-gray-900">
+                  <span key={skill} className="rounded-md bg-primary/10 px-2.5 py-0.5 text-sm font-medium text-primary transition-colors duration-200 hover:bg-primary hover:text-white dark:bg-primary-light/15 dark:text-white dark:hover:bg-primary-light dark:hover:text-gray-900"> {/* Changed dark:text-primary-light to dark:text-white */}
                     {skill}
                   </span>
                 ))}
