@@ -148,7 +148,8 @@ export default function Home() {
               description={project.description}
               imageUrl={project.imageUrl} // Pass the single URL
               tags={project.tags}
-              liveUrl={project.liveUrl} // Use liveUrl for direct external link
+              // Pass liveUrl only if the slug matches the CLV dashboard project
+              liveUrl={project.slug === 'clv-segmentation-dashboard' ? project.liveUrl : undefined}
               repoUrl={project.repoUrl} // Pass the repoUrl prop
             />
           ))}
