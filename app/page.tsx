@@ -148,7 +148,7 @@ export default function Home() {
               description={project.description}
               imageUrl={project.imageUrl} // Pass the single URL
               tags={project.tags}
-              // liveUrl={project.liveUrl} // Remove liveUrl for homepage cards, use slug instead
+              liveUrl={project.liveUrl} // Use liveUrl for direct external link
               repoUrl={project.repoUrl} // Pass the repoUrl prop
             />
           ))}
