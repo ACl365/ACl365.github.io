@@ -76,49 +76,39 @@ export default function AboutContent() {
             <h2 className="mb-4 text-2xl font-semibold text-gray-800 dark:text-white">My Story &amp; Philosophy</h2>
             <div className="prose prose-lg max-w-none dark:prose-invert prose-blue">
               <p className="mb-6">
-                My journey to data science began with a Medical Physics and Bioengineering background. I focused early in my HealthTech career on applying quantitative analysis to improve clinical outcomes. I spent five years developing predictive models (like regression and classification) and data pipelines using Python and SQL from device and patient data, with direct impact on clinical trial efficiency and medical device safety. This experience further cemented my understanding of how data could address significant real-world issues in complex, regulated environments.
+                My path to data science came from a passion for quantitative analysis and having the capability of addressing valuable problems. Starting off with a background in Medical Physics and Bioengineering, I first applied these abilities in the HealthTech sector, conducting detailed data analysis, designing predictive models, and analyzing clinical trial outcomes – gaining experience in pulling useful information from nuanced data.
               </p>
               <p className="mb-6">
-                Seeking to apply data insights in a different domain, I moved into a role with a focus on People Analytics and internal communication. Within the role, I used SQL and BI tools (like Power BI/Looker) to analyse engagement and platform metrics, providing insights that guided the optimisation of communications strategies and improved employee experience through data-driven mechanisms for feedback. This experience broadened my knowledge of the application of data to understand and influence organisational dynamics.
+                Driven by a necessity to develop more comprehensive and scalable solutions, I grew my expertise along the entire data lifecycle, from exploratory data analysis to deployment. This encompassed learning Machine Learning Operations (MLOps) patterns – such as cloud-based data pipelines (GCP) and model monitoring. I also have expertise in advanced techniques for use on a range of issues, including geospatial analysis to discover spatial patterns and interpretable ML (SHAP) to build trust in predictions.
               </p>
               <p className="mb-6">
-                Inspired by a desire to expand my technical expertise and develop more resilient, scalable applications using new methods, I recently completed an immersive Data Analytics intensive program. This formal training, combined with my independent project work—researching environmental justice through geospatial analysis and developing an MLOps pipeline for healthcare prediction (using MLflow, Docker, and FastAPI)—is my ongoing field of study. I enjoy utilising state-of-the-art machine learning, MLOps best practices, geospatial analysis (with GeoPandas/PySAL), and interpretable ML (like SHAP) to solve complex problems, particularly where technology intersects with environmental sustainability and healthcare equity.
+                While I do have a specific interest and great experience in applying data analysis and machine learning in environmental science and healthcare, my interest is broader in applying data effectively to resolve challenging problems wherever they are to be found. My rule of thumb is to develop solutions – from deep analysis, modelling, or dashboards – that are technically sound, efficient, readable, and actionable. I keep exploring deeper techniques, including causal inference (PSM) and LLMs/RAG, to enhance data analysis capability and unlock wider understanding in various application domains.
               </p>
-              <p className="mb-6"> {/* Added margin, last paragraph might not strictly need it but keeps consistency */}
-                My guiding principle is to offer complete, efficient solutions. I am dedicated to thoroughly understanding the context of the issue, developing models that are not only accurate but also interpretable and sustainable, and ensuring that data insights translate into measurable results and responsible innovation. I enjoy multidisciplinary collaboration and anticipate applying my skills to a challenging mid-level role where I can contribute to meaningful projects and continue to grow professionally.
-              </p>
-            </div>
-          </section>
-          {/* Technical Skills section is now correctly inside motion.div */}
-          <section>
-            <h2 className="mb-6 text-2xl font-semibold text-gray-800 dark:text-white">Technical Skills</h2>
-            <div className="space-y-6">
-              {detailedSkills.map((category) => (
-                <div key={category.category}>
-                  <h3 className="mb-3 flex items-center text-lg font-medium text-gray-700 dark:text-gray-300">
-                    {/* Map category name to icon */}
-                    {category.category === 'Languages & Databases' && <Code size={20} className="mr-2 text-primary dark:text-primary-light" />}
-                    {category.category === 'Data Analysis & Machine Learning' && <BrainCircuit size={20} className="mr-2 text-primary dark:text-primary-light" />}
-                    {category.category === 'Geospatial Analysis' && <Map size={20} className="mr-2 text-primary dark:text-primary-light" />}
-                    {category.category === 'Cloud Platforms & MLOps' && <Cloud size={20} className="mr-2 text-primary dark:text-primary-light" />}
-                    {category.category === 'Data Visualisation & BI' && <BarChartHorizontalBig size={20} className="mr-2 text-primary dark:text-primary-light" />}
-                    {category.category === 'Methodologies & Tools' && <Wrench size={20} className="mr-2 text-primary dark:text-primary-light" />}
-                    {category.category === 'Advanced Techniques & Emerging AI' && <FlaskConical size={20} className="mr-2 text-primary dark:text-primary-light" />}
-                    {category.category}
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill) => (
-                      <span key={skill} className="rounded-md bg-gray-100 px-3 py-1 text-sm font-medium text-gray-700 dark:bg-gray-700 dark:text-gray-200">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
             </div>
           </section>
         </motion.div>
       </div>
+      <motion.section
+        className="mt-12 text-center"
+        initial="hidden"
+        animate="visible"
+        variants={fadeInUp}
+        transition={{ delay: 0.6 }} // Add a delay
+      >
+        <div className="prose prose-lg max-w-none dark:prose-invert prose-blue">
+          <p className="mb-6">
+            Explore my projects to see how I apply these principles, or reach out to discuss potential collaborations.
+          </p>
+          <div className="flex justify-center space-x-4">
+            <Link href="/projects" className="inline-block rounded-md bg-primary px-6 py-3 text-lg font-semibold text-white shadow-md transition-colors hover:bg-primary-dark dark:bg-primary-light dark:hover:bg-primary">
+              [ View Projects ]
+            </Link>
+            <Link href="/contact" className="inline-block rounded-md border border-primary px-6 py-3 text-lg font-semibold text-primary shadow-md transition-colors hover:bg-primary hover:text-white dark:border-primary-light dark:text-primary-light dark:hover:bg-primary-light dark:hover:text-gray-900">
+              [ Contact Me ]
+            </Link>
+          </div>
+        </div>
+      </motion.section>
     </>
   );
 }
