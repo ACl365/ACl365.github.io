@@ -88,27 +88,6 @@ export default function AboutContent() {
           </section>
         </motion.div>
       </div>
-      <motion.section
-        className="mt-12 text-center"
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
-        transition={{ delay: 0.6 }} // Add a delay
-      >
-        <div className="prose prose-lg max-w-none dark:prose-invert prose-blue">
-          <p className="mb-6">
-            Explore my projects to see how I apply these principles, or reach out to discuss potential collaborations.
-          </p>
-          <div className="flex justify-center space-x-4">
-            <Link href="/projects" className="inline-block rounded-md bg-primary px-6 py-3 text-lg font-semibold text-white shadow-md transition-colors hover:bg-primary-dark dark:bg-primary-light dark:hover:bg-primary">
-              [ View Projects ]
-            </Link>
-            <Link href="/contact" className="inline-block rounded-md border border-primary px-6 py-3 text-lg font-semibold text-primary shadow-md transition-colors hover:bg-primary hover:text-white dark:border-primary-light dark:text-primary-light dark:hover:bg-primary-light dark:hover:text-gray-900">
-              [ Contact Me ]
-            </Link>
-          </div>
-        </div>
-      </motion.section>
     </>
   );
 }
