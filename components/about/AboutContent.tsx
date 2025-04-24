@@ -76,7 +76,7 @@ export default function AboutContent() {
             <h2 className="mb-4 text-2xl font-semibold text-gray-800 dark:text-white">My Story &amp; Philosophy</h2>
             <div className="prose prose-lg max-w-none dark:prose-invert prose-blue">
               <p className="mb-6">
-                My path to data science came from a passion for quantitative analysis and having the capability of addressing valuable problems. Starting off with a background in Medical Physics and Bioengineering, I first applied these abilities in the HealthTech sector, conducting detailed data analysis, designing predictive models, and analyzing clinical trial outcomes – gaining experience in pulling useful information from nuanced data.
+                My path to data science came from a passion for quantitative analysis and having the capability of addressing valuable problems. Starting off with a background in Medical Physics and Bioengineering, I first applied these abilities in the HealthTech sector, conducting detailed data analysis, designing predictive models, and analysing clinical trial outcomes – gaining experience in pulling useful information from nuanced data.
               </p>
               <p className="mb-6">
                 Driven by a necessity to develop more comprehensive and scalable solutions, I grew my expertise along the entire data lifecycle, from exploratory data analysis to deployment. This encompassed learning Machine Learning Operations (MLOps) patterns – such as cloud-based data pipelines (GCP) and model monitoring. I also have expertise in advanced techniques for use on a range of issues, including geospatial analysis to discover spatial patterns and interpretable ML (SHAP) to build trust in predictions.
